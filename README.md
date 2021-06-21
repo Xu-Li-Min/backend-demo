@@ -1,5 +1,12 @@
 # vue-cms-demo
 
+## Front-End
+- 產品列表：https://xu-li-min.github.io/vue-cms-demo/#/user/userProductList
+
+## Back-End
+- 產品：https://xu-li-min.github.io/vue-cms-demo/#/dashboard/products
+- 訂單：https://xu-li-min.github.io/vue-cms-demo/#/dashboard/orders
+
 ## Project setup
 
 ```

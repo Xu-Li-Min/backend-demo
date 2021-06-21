@@ -10,7 +10,7 @@ import {
 import AllRules from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
-import { currency } from './methods/filter';
+import { currency, date } from './methods/filter';
 import App from './App.vue';
 import router from './router';
 
@@ -28,7 +28,7 @@ setLocale('zh_TW');
 const app = createApp(App);
 app.use(VueAxios, axios);
 app.use(router);
-app.config.globalProperties.$filter = { currency };
+app.config.globalProperties.$filter = { currency, date };
 app.component('Loading', Loading);
 app.component('Form', Form);
 app.component('Field', Field);
