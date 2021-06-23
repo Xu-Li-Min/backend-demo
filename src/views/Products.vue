@@ -1,7 +1,7 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="text-end">
-    <button type="button" @click="openModal(true)">新增產品</button>
+    <button type="button" class="btn btn-primary" @click="openModal(true)">新增產品</button>
   </div>
   <table class="table mt-4">
     <thead>
@@ -26,16 +26,10 @@
         </td>
         <td>
           <div class="btn-group">
-            <button
-              class="btn btn-outline-primary btn-sm"
-              @click="openModal(false, item)"
-            >
+            <button class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">
               編輯
             </button>
-            <button
-              class="btn btn-outline-danger btn-sm"
-              @click="delItem(item)"
-            >
+            <button class="btn btn-outline-danger btn-sm" @click="delItem(item)">
               刪除
             </button>
           </div>
@@ -49,7 +43,7 @@
     :product="tempProduct"
     @update-product="updateProducts"
   ></ProductModal>
-  <DelModal ref="delModal" :product="tempProduct"></DelModal>
+  <DelModal ref="delModal" :product="tempProduct" @check-del="delProduct"></DelModal>
 </template>
 
 <script>
@@ -130,6 +124,15 @@ export default {
       this.$refs.delModal.showModal();
       // console.log(item);
       this.tempProduct = item;
+    },
+    delProduct(item) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
+      this.axios.delete(api).then((res) => {
+        if (res.data.success) {
+          this.$refs.delModal.hideModal();
+          this.getProducts();
+        }
+      });
     },
   },
   created() {

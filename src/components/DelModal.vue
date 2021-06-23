@@ -10,7 +10,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">提醒</h5>
           <button
             type="button"
             class="btn-close"
@@ -18,18 +18,14 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
-          {{ tempProduct }}
-        </div>
+        <div class="modal-body">確定刪除要{{ tempProduct.title }}？</div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            取消
           </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-danger" @click="$emit('check-del', tempProduct)">
+            確認刪除
+          </button>
         </div>
       </div>
     </div>
@@ -48,6 +44,7 @@ export default {
       },
     },
   },
+  emits: ['check-del'],
   watch: {
     product() {
       this.tempProduct = this.product;

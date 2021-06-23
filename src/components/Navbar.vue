@@ -23,10 +23,10 @@
             <router-link to="/dashboard/orders" class="nav-link">訂單</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="logout">登出</a>
+            <router-link to="/dashboard/coupons" class="nav-link">優惠券</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="#" @click.prevent="logout">登出</a>
           </li>
         </ul>
       </div>
